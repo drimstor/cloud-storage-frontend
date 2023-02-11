@@ -1,1 +1,1 @@
-export const API_URL = process.env.PORT;
+export const API_URL = "http://188.68.223.24:5000/";
