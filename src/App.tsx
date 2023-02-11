@@ -14,9 +14,6 @@ function App() {
     dispatch(auth());
   }, []);
 
-  console.log(process.env.PORT);
-  
-
   return isAuth ? (
     <Routes>
       <Route path="*" element={<Home />} />
