@@ -1,0 +1,153 @@
+@use "styles/_helpers.scss" as *;
+
+.medium {
+  @extend %f1;
+  cursor: pointer;
+  width: 100%;
+  min-width: 170px;
+  border-radius: 7px;
+  height: 45px;
+  font-size: 16px;
+  font-weight: 400;
+  transition: all 0.3s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.error {
+    animation: shake 0.65s ease-in-out;
+  }
+
+  &.contained {
+    background: $mainColor;
+    border: none;
+    color: $white;
+    position: relative;
+    box-shadow: 0 4px 14px 0 rgb(0 118 255 / 39%);
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    &:active {
+      opacity: 0.7;
+      transform: scale(0.97);
+    }
+  }
+
+  &.outlined {
+    background: $white;
+    color: $grey;
+    box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
+    border: none;
+
+    &:hover {
+      box-shadow: 0 3px 19px 0 rgb(0 0 0 / 17%);
+    }
+    &:active {
+      transform: scale(0.97);
+    }
+  }
+}
+
+.small {
+  @extend %f1;
+  height: 35px;
+  font-size: 14px;
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+  font-weight: 600;
+  line-height: 120%;
+  transition: 0.3s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+
+  &.contained {
+    border: none;
+    background: $mainColor;
+    color: $white;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &.outlined {
+    border: 1px solid #eaeaea;
+    background: $white;
+    color: #666;
+
+    &:hover {
+      border: 1px solid rgb(169, 169, 169);
+    }
+  }
+}
+
+.iconButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  cursor: pointer;
+  @extend %border;
+  background: #fff;
+
+  svg {
+    font-size: 22px;
+    color: $mainColor;
+    transition: 0.3s;
+  }
+
+  &:hover {
+    background: $mainColor;
+
+    svg {
+      color: $white;
+    }
+  }
+
+  &:active {
+    transform: scale(0.9);
+    box-shadow: 0 0 3px 5px rgb(0 0 0 / 7%), 0 3px 9px rgb(0 0 0 / 5%),
+      0 7px 29px rgb(0 0 0 / 5%);
+  }
+}
+
+.closeButton {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
+  background: #f7f6fb;
+  padding: 3px;
+  border-radius: 6px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @extend %border;
+  transition: 0.3s ease-in-out;
+
+  &:hover svg {
+    color: $mainColor;
+  }
+
+  svg {
+    font-size: 16px;
+    height: 16px;
+    transition: 0.3s;
+    padding-left: 1px;
+
+    &:active {
+      transform: scale(0.8);
+    }
+  }
+}

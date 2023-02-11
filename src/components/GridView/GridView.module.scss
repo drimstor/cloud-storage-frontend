@@ -1,0 +1,103 @@
+@use "styles/_helpers.scss" as *;
+
+.wrapper {
+  height: calc(100% - 89px);
+  overflow-y: scroll;
+  @extend %scroll;
+  position: relative;
+}
+
+.gridBox {
+  > div {
+    padding: 10px 18px 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 20px;
+    justify-content: start;
+  }
+
+  .dir {
+    height: 130px;
+    width: auto;
+    padding-left: 9px;
+    margin-top: -4px;
+  }
+
+  .file {
+    height: 127px;
+    width: auto;
+    padding-bottom: 7px;
+  }
+
+  .picture {
+    height: 132px;
+    margin-top: -4px;
+  }
+
+  .media {
+    height: 110px;
+    margin-top: 5px;
+  }
+}
+
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 169px;
+  height: 200px;
+  border-radius: 24px;
+  padding: 15px;
+  transition: 0.3s;
+  user-select: none;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+
+  &.active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  .title {
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 142px;
+    overflow: hidden;
+  }
+
+  .description {
+    color: #898b95;
+    font-size: 13px;
+  }
+
+  img {
+    pointer-events: none;
+  }
+}
+
+.emptyFolder {
+  position: absolute;
+  top: 38%;
+  width: calc(100% - 20px);
+  text-align: center;
+  color: #898b95;
+  font-size: 18px;
+  user-select: none;
+}
+
+.checkboxWrapper {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}

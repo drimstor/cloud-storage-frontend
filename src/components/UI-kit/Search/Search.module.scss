@@ -1,0 +1,41 @@
+@use "styles/_helpers.scss" as *;  
+ 
+
+
+
+.searchBox {
+  display: flex;
+  align-items: center;
+
+  svg {
+    color: $mainColor;
+    font-size: 14px;
+    margin-left: -25px;
+  }
+}
+
+.search {
+  @extend %border;
+  border-radius: 10px;
+  padding: 7.5px 15px;
+  transition: 0.3s;
+  border: none;
+  outline: none;
+  font-size: 14px;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 3px 3px rgb(0 0 0 / 7%), 0 3px 9px rgb(0 0 0 / 5%),
+      0 5px 24px rgb(0 0 0 / 5%);
+
+    &::placeholder {
+      color: #000;
+    }
+  }
+
+  &::placeholder {
+    transition: 0.3s;
+    color: $lightgrey;
+    user-select: none;
+  }
+}

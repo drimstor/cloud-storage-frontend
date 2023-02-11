@@ -1,0 +1,66 @@
+@use "./animation.scss" as *;
+@use "./helpers.scss" as *;
+
+// html[data-theme="dark"] {
+//   --color1: #1a1a1a;
+//   --color2: #f3f5ed;
+//   --color3: #ee6740;
+//   --color4: #313131e1;
+//   --color5: #252525;
+//   --color6: #1c1c1c;
+
+//   --background: #0e0e0e;
+//   --mainColor: #ee6740;
+//   --input: #1f1f1f;
+//   --monoChrome: #f3f5ed;
+//   --monoChromeReverse: #1f2024;
+//   --mainMono: #1f1f1f;
+// }
+
+html {
+  --background: #f7f9fe;
+  --mainColor: #0070f3;
+
+  --color1: #000000;
+  --color2: #ffffff;
+  --color3: #333c55;
+  --color4: #011734;
+  --color5: #014daa;
+  --color6: #abd1ff;
+
+  --error: rgb(186, 34, 34);
+  --input: #e1eae6;
+  --monoChrome: #364c53;
+  --monoChromeReverse: #e1eae6;
+  --mainMono: #e7ebe9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: $textColor;
+  @extend %f1;
+  background: $background;
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3 {
+  @extend %f1;
+}
+
+ul li {
+  display: block;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: $mainColor;
+  transition: all 0.3s;
+}

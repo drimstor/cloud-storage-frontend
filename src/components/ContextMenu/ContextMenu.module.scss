@@ -1,0 +1,66 @@
+@use "styles/_helpers.scss" as *;
+
+.contextMenuBox {
+  user-select: none;
+  position: fixed;
+  background: #fff;
+  @extend %border;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: none !important;
+  transform: scaleY(0.3);
+  filter: blur(3px);
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+  visibility: hidden;
+  animation: showContext 0.3s ease-in-out;
+
+  &.show {
+    transform: scaleY(1);
+    filter: blur(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:hover {
+    background: white !important;
+  }
+
+  .item {
+    padding: 7px 10px;
+    transition: 0.3s;
+    cursor: pointer;
+    border-bottom: 1px solid #e3e3e3;
+    font-size: 14px;
+    font-weight: 300;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.07);
+    }
+
+    &:active {
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+@keyframes showContext {
+  0% {
+    transform: scaleY(0.3);
+    filter: blur(3px);
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    transform: scaleY(1);
+    filter: blur(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}

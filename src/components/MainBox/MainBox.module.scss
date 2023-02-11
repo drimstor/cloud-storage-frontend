@@ -1,0 +1,74 @@
+@use "styles/_helpers.scss" as *;
+
+.wrapper {
+  width: calc(100% - 365px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .browser {
+    height: calc(100% - 85px);
+    background: $white;
+    @extend %border;
+    border-radius: 24px;
+  }
+}
+
+.breadcrumbsBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  user-select: none;
+  max-width: 98%;
+  overflow: hidden;
+  height: 60px;
+
+  a {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 17px;
+    color: $grey;
+
+    &:not(:last-child)::after {
+      content: "\276F";
+      display: block;
+      font-size: 14px;
+    }
+
+    &:last-child {
+      font-weight: 600;
+      color: $darkblue;
+    }
+  }
+
+  .homeIcon {
+    svg {
+      color: $middleblue;
+    }
+  }
+}
+
+.dragArea {
+  border-radius: 24px;
+  margin: 20px;
+  width: calc(100% - 40px);
+  height: calc(100% - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $lightgrey;
+  font-size: 18px;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='rgb(245,245,245)' rx='24' ry='24' stroke='rgba(161, 161, 161, 0.5)' stroke-width='2' stroke-dasharray='8' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
+}
+
+.preloaderBox {
+  width: 100%;
+  height: calc(100% - 180px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+

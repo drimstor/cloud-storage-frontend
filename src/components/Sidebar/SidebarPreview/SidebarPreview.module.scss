@@ -1,0 +1,134 @@
+@use "styles/_helpers.scss" as *;
+
+.preview {
+  width: 350px;
+  border-radius: 24px;
+  padding: 24px;
+  padding-right: 12px;
+  background: $white;
+  @extend %border;
+  transition: 0.5s ease-in-out;
+  height: 100%;
+  z-index: 2;
+  position: absolute;
+  bottom: -110%;
+  left: 0;
+
+  > div:first-child {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.5);
+    filter: blur(3px);
+  }
+
+  &:hover {
+    > div:first-child {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+      filter: blur(0px);
+    }
+  }
+
+  &.opened {
+    bottom: 0;
+  }
+}
+
+.wrapper {
+  height: 100%;
+  @extend %scroll;
+  overflow-y: scroll;
+  padding-right: 4px;
+
+  .name {
+    font-size: 20px;
+    margin-bottom: 4px;
+    user-select: text;
+    padding-right: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .format {
+    color: #898b95;
+    font-size: 14px;
+    margin-bottom: 24px;
+    text-transform: capitalize;
+  }
+}
+
+.controlPanel {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.previewPictureBox {
+  margin-bottom: 24px;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+
+  img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+
+    &.file {
+      padding: 35px 0;
+    }
+
+    &.media {
+      padding: 35px 0;
+    }
+
+    &.dir {
+      padding: 30px 0 30px 15px;
+    }
+  }
+}
+
+.tableTitle {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.table {
+  width: 100%;
+
+  .tableName {
+    color: #898b95;
+    text-transform: capitalize;
+    width: 15%;
+  }
+
+  .tableValue {
+    text-align: right;
+    padding-left: 14px;
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: text;
+  }
+
+  td {
+    padding: 8px 0;
+  }
+
+  tr {
+    position: relative;
+
+    &:not(tr:last-child)::after {
+      content: "";
+      width: 100%;
+      height: 0.5px;
+      background: #ececef;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}

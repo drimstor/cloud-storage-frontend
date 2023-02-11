@@ -1,0 +1,133 @@
+@use "styles/_helpers.scss" as *;
+
+.wrapper {
+  position: absolute;
+  right: 15px;
+  bottom: -480px;
+  background: #fff;
+  width: 95%;
+  max-width: 320px;
+  height: 470px;
+  @extend %border;
+  border-radius: 24px;
+  z-index: 9;
+  transition: 0.5s ease-in-out;
+
+  &.show {
+    bottom: 15px;
+  }
+
+  > div:first-child {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.6);
+    filter: blur(3px);
+  }
+
+  &:hover {
+    > div:first-child {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+      filter: blur(0px);
+    }
+  }
+
+  h2 {
+    letter-spacing: -2.4px;
+    text-align: center;
+    font-size: 36px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    color: $mainColor;
+    font-weight: 600;
+  }
+}
+
+.uploadsBox {
+  > div {
+    padding: 4px 6px 16px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    overflow-y: auto;
+    @extend %scroll;
+    width: 99%;
+    height: 385px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+}
+
+.uploadItem {
+  height: 50px;
+  @extend %border;
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: flex;
+  gap: 10px;
+
+  img {
+    padding: 4px;
+    @extend %border;
+    border-radius: 6px;
+    width: 34px;
+    height: 34px;
+  }
+}
+.titleBox {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.uploadItemTitle {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  max-width: 173px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.uploadItemSpan {
+  font-size: 13px;
+  font-weight: 600;
+  padding-left: 3px;
+}
+
+.percents {
+  font-size: 13px;
+  width: 33px;
+}
+
+.infoBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.progressBox {
+  display: flex;
+  gap: 8px;
+
+  .progressBar {
+    margin-top: 4px;
+    width: 100%;
+    background: #f7f6fb;
+    border-radius: 12px;
+    height: 10px;
+
+    .progressLine {
+      min-width: 5%;
+      background: $mainColor;
+      height: 100%;
+      width: 5%;
+      border-radius: 12px;
+      transition: 0.3s ease-in-out;
+    }
+  }
+}

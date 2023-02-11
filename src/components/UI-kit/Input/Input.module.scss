@@ -1,0 +1,86 @@
+@use "styles/_helpers.scss" as *;
+
+.inputWrapper {
+  width: 100%;
+  position: relative;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+
+  .showPasswordButton {
+    position: absolute;
+    right: 55px;
+    top: 3px;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  &.error {
+    animation: shake 0.65s ease-in-out;
+
+    &::before,
+    input {
+      border-color: rgba(236, 51, 51, 0.904) !important;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    height: 48px;
+    width: 50px;
+    background: $mainColor;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    border: 1px solid transparent;
+    border-right: 1px solid transparent !important;
+  }
+
+  .errorText {
+    position: absolute;
+    font-size: 13px;
+    color: $error;
+    bottom: -15px;
+    left: 2%;
+    font-weight: 600;
+  }
+
+  input {
+    width: 100%;
+    height: 50px;
+    outline: none;
+    border: 1px solid rgba(181, 181, 181, 0.256);
+    padding-left: 70px;
+    font-size: 16px;
+    line-height: 120%;
+    background: rgba(195, 195, 195, 0.289);
+    @extend %f1;
+    color: $textColor;
+    border-radius: 5px;
+    transition: 0.2s;
+
+    &::placeholder {
+      color: $textColor;
+    }
+
+    &:focus ~ span,
+    &:valid ~ span {
+      background: $textColor;
+      transform: translateY(-33px);
+      font-size: 14px;
+      padding: 3px 8px;
+      border: 1px solid $white;
+    }
+  }
+
+  input[type="password"] {
+    text-transform: none;
+  }
+
+  svg {
+    position: absolute;
+    font-size: 17px;
+    left: 19px;
+    top: 15px;
+    color: $white;
+  }
+}

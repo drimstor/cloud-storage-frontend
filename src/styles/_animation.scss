@@ -1,0 +1,39 @@
+@use "styles/_helpers.scss" as *;
+
+.table-file-enter-active {
+  animation: showTableItem 0.3s ease-in-out forwards;
+}
+
+.grid-file-enter-active {
+  animation: showGridItem 0.3s ease-in-out forwards;
+}
+
+@keyframes showTableItem {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-30%);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0%);
+    filter: blur(0px);
+  }
+}
+
+@keyframes showGridItem {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    filter: blur(5px);
+    transform: scale(0.75);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    filter: blur(0px);
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,42 @@
+@use "styles/_helpers.scss" as *;  
+ 
+
+
+
+.tooltip {
+  user-select: none;
+  padding: 3px 8px;
+  position: absolute;
+  top: -33px;
+  left: calc(50% - 45px);
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid #dee0e5;
+  border-radius: 5px;
+  color: $textColor;
+  visibility: hidden;
+  z-index: 3;
+  white-space: nowrap;
+  text-align: center;
+  text-transform: capitalize;
+  transition: 0.3s;
+  opacity: 0;
+  filter: blur(10px);
+
+  &::before {
+    content: "\25B2";
+    position: absolute;
+    color: #dee0e5;
+    left: calc(50% - 4.5px);
+    bottom: -9px;
+    font-size: 9px;
+    transform: rotate(180deg);
+  }
+}
+
+.tooltip.tooltipShow {
+  visibility: visible;
+  opacity: 1;
+  filter: blur(0px);
+}

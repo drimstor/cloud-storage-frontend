@@ -1,0 +1,13 @@
+@use "styles/_helpers.scss" as *;  
+ 
+
+
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  @include size(calc(100% - 30px), calc(100vh - 115px));
+  margin: 0 auto;
+  position: relative;
+  top: 30px;
+}

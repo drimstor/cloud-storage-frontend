@@ -1,0 +1,189 @@
+@use "styles/_helpers.scss" as *;
+
+.tableBox {
+  margin-top: -5px;
+  overflow-y: scroll;
+  @extend %scroll;
+  width: 100%;
+  height: calc(100% - 78px);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  .thead {
+    text-align: left;
+    position: sticky;
+    top: -1px;
+    background: #fff;
+    user-select: none;
+    z-index: 2;
+
+    .tr {
+      display: flex;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      right: 20px;
+      width: calc(100% - 32px);
+      height: 1px;
+      background: #ececef;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 20px;
+      right: 20px;
+      width: calc(100% - 32px);
+      height: 1px;
+      background: #ececef;
+    }
+
+    .th {
+      color: #898b95;
+      font-weight: 400;
+      font-size: 16px;
+      padding: 20px 20px 15px;
+      position: relative;
+      cursor: pointer;
+      transition: 0.3s color;
+
+      &:hover {
+        color: $darkblue;
+      }
+
+      &:nth-child(1) {
+        width: max-content;
+      }
+
+      &:nth-child(2) {
+        width: 105px;
+        margin-left: auto;
+      }
+
+      &:nth-child(3) {
+        width: 140px;
+      }
+
+      .arrow {
+        top: 5px;
+        right: -18px;
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        font-size: 10px;
+        display: none;
+
+        &.active {
+          display: inline-block;
+        }
+
+        &.rotate {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  .tbody {
+    overflow: hidden;
+
+    .tr {
+      transition: 0.3s;
+      max-height: 52px;
+      cursor: pointer;
+      user-select: none;
+      width: 100%;
+      display: flex;
+
+      &.active {
+        background: rgba(0, 0, 0, 0.08);
+      }
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.08);
+      }
+
+      &:active {
+        background: rgba(0, 0, 0, 0.12);
+      }
+    }
+
+    .td {
+      padding: 15px;
+      padding-left: 20px;
+
+      &:nth-child(1) {
+        width: max-content;
+      }
+
+      &:nth-child(2) {
+        width: 105px;
+        margin-left: auto;
+      }
+
+      &:nth-child(3) {
+        width: 140px;
+      }
+
+      &:first-child {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        p {
+          white-space: nowrap;
+          max-width: 635px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .imgBox {
+          width: 22px;
+          height: 22px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        img {
+          max-width: 22px;
+          max-height: 22px;
+        }
+      }
+    }
+  }
+}
+
+.emptyFolder {
+  position: absolute;
+  top: 50%;
+  left: 53%;
+  transform: translate(50%, 50%);
+  text-align: center;
+  color: #898b95;
+  font-size: 18px;
+  user-select: none;
+}
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 19px;
+
+  label {
+    padding: 0;
+  }
+}
+
+.arrowWrapper {
+  position: relative;
+}
