@@ -1,1 +1,1 @@
-export const API_URL = "http://188.68.223.24:5000/";
+export const API_URL = "http://cloud-storage-server.ru/";
