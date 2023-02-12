@@ -30,6 +30,7 @@ function ModalChangeAvatar() {
           message: "Image has been uploaded",
         })
       );
+      closeModalHandler();
     } else {
       dispatch(
         setShowSnackbar({
@@ -51,6 +52,7 @@ function ModalChangeAvatar() {
           message: "Image has been uploaded",
         })
       );
+      closeModalHandler();
     } else {
       dispatch(
         setShowSnackbar({
