@@ -124,7 +124,9 @@ function SignUp() {
   useEffect(() => {
     async function signUp() {
       await dispatch(registration(formFields));
-      await dispatch(uploadAvatar(formFields.file));
+      if (!!formFields.file) {
+        await dispatch(uploadAvatar(formFields.file));
+      }
     }
 
     if (isNoError && formFields.password === formFields.confirmPassword) {
