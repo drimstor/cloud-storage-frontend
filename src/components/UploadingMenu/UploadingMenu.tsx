@@ -21,7 +21,7 @@ function UploadingMenu() {
     );
 
     if (completedUploads.length === files.uploadingFiles.length) {
-      const timer = setTimeout(closeUploadingMenuHandler, 10000);
+      const timer = setTimeout(closeUploadingMenuHandler, 5000);
       return () => clearTimeout(timer);
     }
   }, [files]);
