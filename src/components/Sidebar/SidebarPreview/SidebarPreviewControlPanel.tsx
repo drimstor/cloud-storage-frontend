@@ -26,6 +26,7 @@ function SidebarPreviewControlPanel({ file, link }: ControlPanelProps) {
     const a = document.createElement("a");
     a.href = link;
     a.download = "true";
+    a.target = "_blank";
     a.click();
   };
 
