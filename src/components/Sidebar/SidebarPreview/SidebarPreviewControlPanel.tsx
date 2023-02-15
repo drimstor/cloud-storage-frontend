@@ -22,12 +22,7 @@ function SidebarPreviewControlPanel({ file, link }: ControlPanelProps) {
   const dispatch = useAppDispatch();
 
   const downloadFileHandler = () => {
-    // dispatch(downloadFile(file));
-    const a = document.createElement("a");
-    a.href = link;
-    a.download = "true";
-    a.target = "_blank";
-    a.click();
+    dispatch(downloadFile(file));
   };
 
   const deleteFileHandler = () => {
