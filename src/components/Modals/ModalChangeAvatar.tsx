@@ -10,7 +10,7 @@ import { API_URL } from "config";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { deleteAvatar, uploadAvatar } from "redux/slices/userSlice";
 import { setShowModal, setShowSnackbar } from "redux/slices/messageSlice";
-import useImage from "hooks/useImage";
+import Image from "helpers/Image";
 import CloseButton from "components/UI-kit/Buttons/CloseButton";
 
 function ModalChangeAvatar() {
@@ -89,8 +89,7 @@ function ModalChangeAvatar() {
         <h2>Change avatar</h2>
         <div className={s.changeAvatarBox}>
           {avatar ? (
-            // eslint-disable-next-line react-hooks/rules-of-hooks
-            useImage(API_URL + avatar, "avatar")
+            <img src={API_URL + avatar} alt="avatar" />
           ) : (
             <FontAwesomeIcon icon={faUser} />
           )}

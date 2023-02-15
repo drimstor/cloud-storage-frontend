@@ -14,8 +14,8 @@ import {
 import clsx from "clsx";
 import { getGridFileIcon } from "helpers/getFileIcon";
 import { formatDate } from "helpers/formatDate";
-import useImage from "hooks/useImage";
 import Checkbox from "components/UI-kit/Checkbox/Checkbox";
+import Image from "helpers/Image";
 
 function GridViewItem({ file }: { file: iFile }) {
   const dispatch = useAppDispatch();
@@ -66,7 +66,7 @@ function GridViewItem({ file }: { file: iFile }) {
       onClick={openFolderHandler}
       onContextMenu={openContextMenuHadler}
     >
-      {useImage(getGridFileIcon(file.type), "icon", s[file.type])}
+      {Image(getGridFileIcon(file.type), "icon", s[file.type])}
       <div className={s.textBox}>
         <p className={s.title}>{file.name}</p>
         <span className={s.description}>{formatDate(file.date)}</span>

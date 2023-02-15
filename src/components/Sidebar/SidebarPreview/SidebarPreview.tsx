@@ -8,7 +8,7 @@ import { getGridFileIcon } from "helpers/getFileIcon";
 import { formatDate } from "helpers/formatDate";
 import { API_URL } from "config";
 import CloseButton from "components/UI-kit/Buttons/CloseButton";
-import useImage from "hooks/useImage";
+import Image from "helpers/Image";
 import { setShowSidebarPreview } from "redux/slices/messageSlice";
 import SidebarPreviewControlPanel from "./SidebarPreviewControlPanel";
 
@@ -102,7 +102,7 @@ function SidebarPreview() {
         </div>
 
         <div className={s.previewPictureBox}>
-          {useImage(
+          {Image(
             fileInfo?.type === "picture"
               ? link
               : fileInfo?.type && getGridFileIcon(fileInfo?.type),

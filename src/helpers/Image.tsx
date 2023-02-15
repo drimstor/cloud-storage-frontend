@@ -1,7 +1,7 @@
 import ImageLoader from "components/Loaders/ImageLoader";
 import { useEffect, useState } from "react";
 
-function useImage(src?: string, alt?: string, className?: string) {
+function Image(src?: string, alt?: string, className?: string) {
   const [image, setImage] = useState(src);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -29,4 +29,4 @@ function useImage(src?: string, alt?: string, className?: string) {
   );
 }
 
-export default useImage;
+export default Image;
