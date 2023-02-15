@@ -39,6 +39,7 @@
   height: 100%;
   @extend %scroll;
   overflow-y: scroll;
+  overflow-x: hidden;
   padding-right: 4px;
 
   .name {
