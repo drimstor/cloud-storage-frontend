@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCirclePlay,
@@ -8,52 +7,71 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import s from "./Sidebar.module.scss";
 import ProgressCircle from "./ProgressCircle";
+import { calculateFiles } from "redux/slices/fileSlice";
+import { useAppDispatch, useAppSelector } from "hooks/redux";
+import { sortOneObject } from "helpers/sortOneObject";
+import { sortObject } from "helpers/sortObject";
 
 function SidebarInfo() {
-  const [dataObject, setDataObject] = useState({
-    percent1: 0,
-    percent2: 0,
-    percent3: 0,
-  });
+  const dispatch = useAppDispatch();
+  const storageSize = useAppSelector((state) => state.files.storageSize);
+  const files = useAppSelector((state) => state.files.files);
+  const user = useAppSelector((state) => state.user.profile);
 
-  const data = {
-    percent1: 85,
-    percent2: 60,
-    percent3: 35,
-  };
+  const [dataObject, setDataObject] = useState({
+    file: 0,
+    media: 0,
+    picture: 0,
+  });
 
   const dataArray = [
     {
       icon: faCirclePlay,
       text: "Media",
-      value: dataObject.percent1,
+      value: dataObject.media,
     },
     {
       icon: faImage,
       text: "Pictures",
-      value: dataObject.percent2,
+      value: dataObject.picture,
     },
     {
       icon: faFileLines,
       text: "Docs",
-      value: dataObject.percent3,
+      value: dataObject.file,
     },
   ];
 
+  sortObject(dataArray, "value", 0);
+
   useEffect(() => {
     const handleSetDataObject = () => {
-      setDataObject(data);
+      setDataObject({
+        file: storageSize.file / (user?.diskSpace! / 100),
+        media: storageSize.media / (user?.diskSpace! / 100),
+        picture: storageSize.picture / (user?.diskSpace! / 100),
+      });
     };
-
     const timer = setTimeout(handleSetDataObject, 1500);
-
     return () => clearTimeout(timer);
-  }, []);
+  }, [storageSize]);
+
+  useEffect(() => {
+    dispatch(calculateFiles());
+  }, [files]);
+
+  const sumValue: any = Object.values(dataObject).reduce(
+    (acc: any, number: any) => acc + number,
+    0
+  );
 
   return (
     <div className={s.infoBox}>
       <div className={s.infoLoadCircle}>
-        <ProgressCircle data={dataObject} />
+        <ProgressCircle
+          data={sortOneObject(dataObject, 0)}
+          sumValue={sumValue}
+        />
       </div>
 
       <div className={s.infoData}>
@@ -64,7 +82,9 @@ function SidebarInfo() {
             <div className={s.progressBar}>
               <div
                 className={s.progressLine}
-                style={{ width: `${data.value}%` }}
+                style={{
+                  width: `${sumValue < 33 ? data.value * 3 : data.value}%`,
+                }}
               />
             </div>
           </div>

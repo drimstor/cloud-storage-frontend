@@ -13,10 +13,22 @@ import {
 
 interface iInitialState {
   files: iFile[] | [];
+  storageSize: {
+    media: number;
+    picture: number;
+    file: number;
+    total: number;
+  };
 }
 
 const initialState: iInitialState = {
   files: [],
+  storageSize: {
+    media: 0,
+    picture: 0,
+    file: 0,
+    total: 0,
+  },
 };
 
 export const getFiles = createAsyncThunk(
@@ -277,6 +289,27 @@ export const renameFile = createAsyncThunk(
 
 // -------------------------- //
 
+export const calculateFiles = createAsyncThunk(
+  "file/calculateFiles",
+  async (_, { dispatch }) => {
+    try {
+      const response = await axios.get(`${API_URL}api/files/calculate`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      return response.data;
+    } catch (error: any) {
+      return dispatch(
+        setShowSnackbar({
+          variant: "fail",
+          message: error.response.data.message,
+        })
+      );
+    }
+  }
+);
+
+// -------------------------- //
+
 const fileSlice = createSlice({
   name: "file",
   initialState,
@@ -330,6 +363,10 @@ const fileSlice = createSlice({
     });
 
     // -------------------------- //
+
+    builder.addCase(calculateFiles.fulfilled, (state, action) => {
+      state.storageSize = action.payload;
+    });
   },
 });
 

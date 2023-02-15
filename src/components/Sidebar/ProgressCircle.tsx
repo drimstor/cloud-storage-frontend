@@ -1,4 +1,3 @@
-import React from "react";
 import { easeQuadInOut } from "d3-ease";
 import AnimatedProgressProvider from "./AnimatedProgressProvider";
 import "react-circular-progressbar/dist/styles.css";
@@ -7,11 +6,13 @@ import {
   CircularProgressbarWithChildren,
 } from "react-circular-progressbar";
 
-function ProgressCircle({ data }: any) {
+function ProgressCircle({ data, sumValue }: any) {
+  const dataKeys = Object.keys(data);
+
   return (
     <AnimatedProgressProvider
       valueStart={0}
-      valueEnd={data.percent1}
+      valueEnd={sumValue}
       duration={2}
       easingFunction={easeQuadInOut}
     >
@@ -19,17 +20,17 @@ function ProgressCircle({ data }: any) {
         const roundedValue = Math.round(value);
         return (
           <CircularProgressbarWithChildren
-            value={data.percent1}
+            value={sumValue}
             strokeWidth={12}
             styles={buildStyles({
               rotation: 0.28,
               pathTransitionDuration: 2,
-              pathColor: `#abd1ff`,
+              pathColor: "#024da9",
               trailColor: "#fff",
             })}
           >
             <CircularProgressbarWithChildren
-              value={data.percent2}
+              value={sumValue - data[dataKeys[0]]}
               strokeWidth={12}
               styles={buildStyles({
                 rotation: 0.28,
@@ -39,12 +40,12 @@ function ProgressCircle({ data }: any) {
               })}
             >
               <CircularProgressbarWithChildren
-                value={data.percent3}
+                value={data[dataKeys[2]]}
                 strokeWidth={12}
                 styles={buildStyles({
                   rotation: 0.28,
                   pathTransitionDuration: 1,
-                  pathColor: "#024da9",
+                  pathColor: `#abd1ff`,
                   trailColor: "transparent",
                 })}
               ></CircularProgressbarWithChildren>
