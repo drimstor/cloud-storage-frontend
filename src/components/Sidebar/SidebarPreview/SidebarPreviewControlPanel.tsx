@@ -23,6 +23,13 @@ function SidebarPreviewControlPanel({ file, link }: ControlPanelProps) {
 
   const downloadFileHandler = () => {
     dispatch(downloadFile(file));
+    if (file?.size! > 2000000)
+      dispatch(
+        setShowSnackbar({
+          variant: "attention",
+          message: "File is being prepared",
+        })
+      );
   };
 
   const deleteFileHandler = () => {
