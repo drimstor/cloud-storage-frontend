@@ -5,6 +5,7 @@ import {
   buildStyles,
   CircularProgressbarWithChildren,
 } from "react-circular-progressbar";
+import { memo } from "react";
 
 function ProgressCircle({ data, sumValue }: any) {
   const dataKeys = Object.keys(data);
@@ -58,4 +59,4 @@ function ProgressCircle({ data, sumValue }: any) {
   );
 }
 
-export default ProgressCircle;
+export default memo(ProgressCircle);

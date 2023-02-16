@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCirclePlay,
@@ -11,13 +11,13 @@ import { calculateFiles } from "redux/slices/fileSlice";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { sortOneObject } from "helpers/sortOneObject";
 import { sortObject } from "helpers/sortObject";
+import { getPercentOfNumber } from "helpers/getPercentOfNumber";
 
 function SidebarInfo() {
   const dispatch = useAppDispatch();
   const storageSize = useAppSelector((state) => state.files.storageSize);
   const files = useAppSelector((state) => state.files.files);
   const user = useAppSelector((state) => state.user.profile);
-
   const [dataObject, setDataObject] = useState({
     file: 0,
     media: 0,
@@ -47,9 +47,9 @@ function SidebarInfo() {
   useEffect(() => {
     const handleSetDataObject = () => {
       setDataObject({
-        file: storageSize.file / (user?.diskSpace! / 100),
-        media: storageSize.media / (user?.diskSpace! / 100),
-        picture: storageSize.picture / (user?.diskSpace! / 100),
+        file: getPercentOfNumber(storageSize.file, user?.diskSpace!),
+        media: getPercentOfNumber(storageSize.media, user?.diskSpace!),
+        picture: getPercentOfNumber(storageSize.picture, user?.diskSpace!),
       });
     };
     const timer = setTimeout(handleSetDataObject, 1500);
@@ -94,4 +94,4 @@ function SidebarInfo() {
   );
 }
 
-export default SidebarInfo;
+export default memo(SidebarInfo);

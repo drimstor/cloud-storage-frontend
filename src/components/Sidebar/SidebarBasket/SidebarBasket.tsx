@@ -1,7 +1,7 @@
 import s from "./SidebarBasket.module.scss";
 import basketBottom from "img/basketBottom.svg";
 import basketTop from "img/basketTop.svg";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import clsx from "clsx";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { setBacketState } from "redux/slices/controlSlice";
@@ -71,4 +71,4 @@ function SidebarBasket() {
   );
 }
 
-export default SidebarBasket;
+export default memo(SidebarBasket);

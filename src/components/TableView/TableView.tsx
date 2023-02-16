@@ -1,7 +1,7 @@
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import clsx from "clsx";
 import s from "./TableView.module.scss";
 import { iFile } from "types/files";
@@ -117,4 +117,4 @@ function TableView({ files }: { files: iFile[] }) {
   );
 }
 
-export default TableView;
+export default memo(TableView);

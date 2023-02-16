@@ -1,9 +1,8 @@
-import React from "react";
+import { memo } from "react";
 import { iFile } from "types/files";
 import s from "./GridView.module.scss";
 import GridViewItem from "./GridViewItem";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import SidebarBasket from "components/Sidebar/SidebarBasket/SidebarBasket";
 
 function GridView({ files }: { files: iFile[] }) {
   return (
@@ -28,4 +27,4 @@ function GridView({ files }: { files: iFile[] }) {
   );
 }
 
-export default GridView;
+export default memo(GridView);

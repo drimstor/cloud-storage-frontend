@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import s from "./SidebarPreview.module.scss";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import clsx from "clsx";
@@ -147,4 +147,4 @@ function SidebarPreview() {
   );
 }
 
-export default SidebarPreview;
+export default memo(SidebarPreview);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import s from "./Sidebar.module.scss";
 import folder1 from "img/folderIcon1.svg";
 import folder2 from "img/folderIcon2.svg";
@@ -16,4 +16,4 @@ function SidebarImages() {
   );
 }
 
-export default SidebarImages;
+export default memo(SidebarImages);
