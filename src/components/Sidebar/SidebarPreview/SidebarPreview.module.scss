@@ -69,12 +69,12 @@
 .previewPictureBox {
   margin-bottom: 24px;
   width: 300px;
-  height: 300px;
+  height: 250px;
   text-align: center;
 
   img {
     width: 300px;
-    height: 300px;
+    height: 250px;
     object-fit: contain;
 
     &.file {
