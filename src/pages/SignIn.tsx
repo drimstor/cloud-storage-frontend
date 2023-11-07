@@ -1,6 +1,7 @@
 import { faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Button from "components/UI-kit/Buttons/Button";
 import Input from "components/UI-kit/Input/Input";
+import ButtonLoader from "components/UI-kit/Loaders/ButtonLoader";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import useValidation from "hooks/useValidation/useValidation";
 import React, { useEffect, useState } from "react";
@@ -27,8 +28,12 @@ const formInputs = [
 function SignIn() {
   const dispatch = useAppDispatch();
   const messages = useAppSelector((state) => state.messages.showSnackbar);
+  const loader = useAppSelector((state) => state.messages.showLoader);
+  const [error, setError] = useState(false);
   const { runCheck, isCheckError, checkValidate, isNoError, formFields } =
     useValidation();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -37,6 +42,7 @@ function SignIn() {
 
   useEffect(() => {
     if (isNoError) {
+      setIsLoading(true);
       dispatch(
         login({
           email: formFields.email,
@@ -44,9 +50,10 @@ function SignIn() {
         })
       );
     }
-  }, [isNoError]);
 
-  const [error, setError] = useState(false);
+    if (error) setIsLoading(false);
+  }, [isNoError, loader, error]);
+
   useEffect(() => {
     const foundError = messages.filter(
       (err) =>
@@ -76,7 +83,7 @@ function SignIn() {
           ))}
 
           <Button error={error} variant="contained" size="medium" typeSubmit>
-            Sing in
+            {isLoading ? <ButtonLoader /> : "Sing in"}
           </Button>
         </form>
         <p>

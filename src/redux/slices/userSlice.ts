@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_URL } from "config";
 import { iLoginUser, iUser } from "types/users";
-import { setShowSnackbar } from "./messageSlice";
+import { setShowLoader, setShowSnackbar } from "./messageSlice";
 
 interface iInitialState {
   profile: iUser | null;
@@ -24,7 +24,7 @@ export const registration = createAsyncThunk(
         `${API_URL}api/auth/registration`,
         data
       );
-
+      dispatch(setShowLoader("pagesLoader"));
       dispatch(
         setShowSnackbar({
           variant: "success",
@@ -53,6 +53,7 @@ export const login = createAsyncThunk(
         email: data.email,
         password: data.password,
       });
+      dispatch(setShowLoader("pagesLoader"));
       dispatch(
         setShowSnackbar({
           variant: "success",

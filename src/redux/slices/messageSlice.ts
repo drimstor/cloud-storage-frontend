@@ -18,7 +18,7 @@ interface iInitialState {
     variant: "fileOptions" | "folderOptions";
   };
   showSnackbar: iSnackbar[];
-  showLoader: boolean;
+  showLoader: string | null;
   showUploader: {
     isShowUploader: boolean;
     uploadingFiles: iUploadingFile[];
@@ -30,7 +30,7 @@ const initialState: iInitialState = {
   showSidebarPreview: null,
   showContextMenu: null,
   showSnackbar: [],
-  showLoader: false,
+  showLoader: null,
   showUploader: {
     isShowUploader: false,
     uploadingFiles: [],
