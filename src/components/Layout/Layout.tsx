@@ -13,7 +13,7 @@ function Layout({ children }: LayoutProps) {
     <div className={s.wrapper}>
       <Header />
       {children}
-      <PagesLoader />
+      {/* <PagesLoader /> */}
       <Messages />
     </div>
   );

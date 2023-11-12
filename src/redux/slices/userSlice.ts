@@ -24,7 +24,7 @@ export const registration = createAsyncThunk(
         `${API_URL}api/auth/registration`,
         data
       );
-      dispatch(setShowLoader("pagesLoader"));
+      // dispatch(setShowLoader("pagesLoader"));
       dispatch(
         setShowSnackbar({
           variant: "success",
@@ -53,7 +53,7 @@ export const login = createAsyncThunk(
         email: data.email,
         password: data.password,
       });
-      dispatch(setShowLoader("pagesLoader"));
+      // dispatch(setShowLoader("pagesLoader"));
       dispatch(
         setShowSnackbar({
           variant: "success",
